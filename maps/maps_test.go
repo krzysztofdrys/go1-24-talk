@@ -91,7 +91,7 @@ func BenchmarkMapDelete(b *testing.B) {
 	for _, size := range testSize {
 		b.Run(fmt.Sprint(size), func(b *testing.B) {
 			b.StopTimer()
-			m := make(map[int64]struct{}, 2*size)
+			m := make(map[int64]struct{}, size)
 			for j := int64(0); j < size; j++ {
 				m[j] = struct{}{}
 			}
@@ -100,6 +100,20 @@ func BenchmarkMapDelete(b *testing.B) {
 				for j := int64(0); j < size; j++ {
 					delete(m, j)
 				}
+			}
+		})
+	}
+}
+
+func BenchmarkMapCreate(b *testing.B) {
+	testSize := []int64{10, 100, 1000, 10000}
+	sink := 0
+
+	for _, size := range testSize {
+		b.Run(fmt.Sprint(size), func(b *testing.B) {
+			for i := 0; i < b.N; i++ {
+				m := make(map[int64]struct{}, size)
+				sink += len(m)
 			}
 		})
 	}
