@@ -5,9 +5,11 @@ import (
 	"testing"
 )
 
-func BenchmarkMapAppend(b *testing.B) {
-	testSize := []int64{10, 100, 1000, 10000}
+var (
+	testSize = []int64{10, 100, 1_000, 10_000, 100_000, 1_000_000}
+)
 
+func BenchmarkMapAppend(b *testing.B) {
 	for _, size := range testSize {
 		b.Run(fmt.Sprint(size), func(b *testing.B) {
 			for i := 0; i < b.N; i++ {
@@ -21,8 +23,6 @@ func BenchmarkMapAppend(b *testing.B) {
 }
 
 func BenchmarkMapInsert(b *testing.B) {
-	testSize := []int64{10, 100, 1000, 10000}
-
 	for _, size := range testSize {
 		b.Run(fmt.Sprint(size), func(b *testing.B) {
 			for i := 0; i < b.N; i++ {
@@ -36,7 +36,6 @@ func BenchmarkMapInsert(b *testing.B) {
 }
 
 func BenchmarkMapGetHit(b *testing.B) {
-	testSize := []int64{10, 100, 1000, 10000}
 	var sink int
 
 	for _, size := range testSize {
@@ -61,7 +60,6 @@ func BenchmarkMapGetHit(b *testing.B) {
 }
 
 func BenchmarkMapGetMiss(b *testing.B) {
-	testSize := []int64{10, 100, 1000, 10000}
 	var sink int
 
 	for _, size := range testSize {
@@ -86,8 +84,6 @@ func BenchmarkMapGetMiss(b *testing.B) {
 }
 
 func BenchmarkMapDelete(b *testing.B) {
-	testSize := []int64{10, 100, 1000, 10000}
-
 	for _, size := range testSize {
 		b.Run(fmt.Sprint(size), func(b *testing.B) {
 			b.StopTimer()
@@ -106,7 +102,6 @@ func BenchmarkMapDelete(b *testing.B) {
 }
 
 func BenchmarkMapCreate(b *testing.B) {
-	testSize := []int64{10, 100, 1000, 10000}
 	sink := 0
 
 	for _, size := range testSize {
