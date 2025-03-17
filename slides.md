@@ -78,12 +78,11 @@ When I was a student, hash maps seemed like a solved problem to me: [^1].
 
 # Swiss tables
 
-1. I have no idea why they are called like that.
-2. Created at Google in 2017,
+1. Created at Google in 2017
+2. Created in Google Zurich and uses closed hashing, hence name,
 3. Implemented as an open-source project c++ library in 2018,
 4. Implemented as Go libraries by a few people (https://github.com/cockroachdb/swiss, https://github.com/dolthub/swiss)
 5. Now used as `map` "backend" in Go 1.24.
-
 
 ---
 
@@ -91,13 +90,16 @@ When I was a student, hash maps seemed like a solved problem to me: [^1].
 
 1. A lot of apps I worked on, spent most of their time marshalling/unmarshalling JSON, so I don't know if they would be affected 🤷‍♂️ 
 2. I imagine that 1% performance boost means big savings for Google and other big companies 💰
-3. Let's see if we can replicate this.
 
 ---
 
-# Go team is very happy about this
+# Benchmarks from Go team
 
 <img src="./img/comment.png">
+
+---
+
+# CPU and memory
 
 ---
 
