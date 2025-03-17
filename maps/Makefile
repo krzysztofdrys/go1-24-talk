@@ -13,3 +13,6 @@ go1.24.0.txt:
 
 diff.txt: go1.23.0.txt go1.24.0.txt
 	${GOPATH}/bin/benchstat go1.23.0.txt go1.24.0.txt > diff.txt
+
+clean:
+	rm go1.23.0.txt go1.24.0.txt diff.txt
