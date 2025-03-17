@@ -6,10 +6,10 @@ init:
 	go install golang.org/x/perf/cmd/...@latest
 
 go1.23.0.txt:
-	${GOPATH}/bin/go1.23.0 test -bench=. -benchmem -count=15 -benchtime 5s -timeout 1h | tee go1.23.0.txt
+	${GOPATH}/bin/go1.23.0 test -bench=. -benchmem -count=15 -benchtime 10s -timeout 2h | tee go1.23.0.txt
 
 go1.24.0.txt:
-	${GOPATH}/bin/go1.24.0 test -bench=. -benchmem -count=15 -benchtime 5s -timeout 1h | tee go1.24.0.txt
+	${GOPATH}/bin/go1.24.0 test -bench=. -benchmem -count=15 -benchtime 10s -timeout 2h | tee go1.24.0.txt
 
 diff.txt: go1.23.0.txt go1.24.0.txt
 	${GOPATH}/bin/benchstat go1.23.0.txt go1.24.0.txt > diff.txt
